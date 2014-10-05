@@ -7,8 +7,24 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<nav>
+  <% if current_user %>
+  <ul>
+  	<li<a href="/users/<%= current_user.id %>">Profile</a>></li>
+  	<li><a href="/posts">All Posts</a></li>
+  	<li><a href="/logout">Logout</a></li>
+  </ul>
+  <%else%>
+  	<ul>
+  	  <li><a href="/login">Login</a></li>
+  	  <li><a href="/users/new">Register</a></li>
+  	</ul>
+  <% end %>
+</nav>
+  <div class="container">
 
 <%= yield %>
 
+  </div>
 </body>
 </html>

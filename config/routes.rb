@@ -5,22 +5,29 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
-  root 'users#index'
+  root 'users#index', as: 'root'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
-  get '/users/new' => 'users#new'
+  get '/login'  => 'users#login', as: 'users_login'
+
+  post '/login' => 'users#post_login'
+
+  get '/users' => 'users#index', as: 'users_path'
+
+  get '/users/new' => 'users#new', as: 'new_user_path'
 
   post '/users/new' => 'users#create'
 
-  get '/users/:id' => 'users#show'
+  get '/users/:id' => 'users#show', as: 'user'
 
-  get '/users/:id/edit' => 'users#edit'
+  get '/users/:id/edit' => 'users#edit', as: 'edit_user_path'
 
   patch '/users/:id' => 'users#update'
 
   delete '/users/:id' => 'users#destroy'
+
 
 
 

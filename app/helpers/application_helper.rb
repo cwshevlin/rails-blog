@@ -1,19 +1,8 @@
 module ApplicationHelper
 
-  def users_path
-    "/users"
+  def current_user
+    @user ||= User.find_by(id: session[:user_id])
   end
 
-  def new_user_path
-    "/users/new"
-  end
-
-  def edit_user_path(id)
-    "/users/#{id}/edit"
-  end
-
-  def user_path(id)
-    "/users/#{id}"
-  end
 
 end

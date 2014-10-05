@@ -6,11 +6,25 @@ class UsersController < ActionController::Base
   end
 
   def create
-    user = User.create(username: params[:username], password: params[:password])
+    user = User.create(username: params[:user][:username], password: params[:user][:password])
+    session[:user_id] = user.id
+    puts user.id
     redirect_to user_path(user.id)
   end
 
   def login
+
+  end
+
+  def post_login
+    user = User.find_by(username: params[:username])
+
+    if user && user.authenticate
+      session[:user_id] = user.id
+      redirect_to user_path(user.id)
+    else
+      redirect_to root_path
+    end
   end
 
 end
