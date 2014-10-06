@@ -1,1 +1,16 @@
-<h1>Show</h1>
+<h1><%=current_user.username%>'s Profile</h1>
+
+<table class="table">
+	<th> Title </th>
+	<th> Body </th>
+	<th> Author </th>
+<% @posts.each do |post| %>
+	<tr>
+	<td><a href="/posts/<%=post.id%>"> <%= post.title %> </a></td>
+	<td> <%= post.body[0..40] %>... </td>
+	<td> <%= post.author.username %></td>
+	</tr>
+<% end %>
+</table>
+
+

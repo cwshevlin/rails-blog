@@ -17,10 +17,10 @@ class User < ActiveRecord::Base
     self.password_digest = @password
   end
 
-  def self.authenticate(email, input_password)
-    student = Student.find_by_email(email)
-    if student && student.password == input_password
-      return student
+  def authenticate(username, input_password)
+    user = User.find_by_username(username)
+    if user && user.password == input_password
+      return user
     else
       return false
     end

@@ -11,16 +11,18 @@
 <nav>
   <% if current_user %>
   <ul>
-  	<li><a href="/users/<%= current_user.id %>">Profile</a></li>
-  	<li><a href="/posts">All Posts</a></li>
+    <li><a href="/users/<%= current_user.id %>">Profile</a></li>
+    <li><a href="/posts">All Posts</a></li>
     <li><a href="/posts/new">New Post</a></li>
-  	<li><a href="/logout">Logout</a></li>
+    <li><a href="/logout">Logout</a></li>
+    <li><h3>RailsBlog</h3></li>
   </ul>
   <%else%>
-  	<ul>
-  	  <li><a href="/login">Login</a></li>
-  	  <li><a href="/users/new">Register</a></li>
-  	</ul>
+    <ul>
+      <li><a href="/login">Login</a></li>
+      <li><a href="/users/new">Register</a></li>
+      <li><h3>RailsBlog</h3></li>
+    </ul>
   <% end %>
 </nav>
   <div class="container">

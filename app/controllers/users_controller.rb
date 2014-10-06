@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
+    @posts = Post.where(author_id: current_user.id)
   end
 
   def edit
@@ -28,9 +28,10 @@ class UsersController < ApplicationController
 
 
   def post_login
-    user = User.find_by(username: params[:username])
-
-    if user && user.authenticate
+    user = User.find_by(username: params[:user][:username])
+    p user
+    puts "^^^^^^^^^^^^"
+    if user && user.authenticate(params[:user][:username], params[:user][:password])
       session[:user_id] = user.id
       redirect_to user_path(user.id)
     else
