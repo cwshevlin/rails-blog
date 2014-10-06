@@ -1,0 +1,18 @@
+<h1><%= @post.title %></h1>
+
+<% if current_user == @post.author %>
+<div class="link_controls">
+<%= link_to("Delete", delete_post_path, method: :delete) %>
+<%= link_to("Edit", edit_post_path) %>
+<%= link_to("New", new_post_path) %>
+</div>
+<% end %>
+
+<p>by <%= @post.author.username %></p>
+
+<p><%= @post.body %> </p>
+
+
+
+
+

@@ -14,19 +14,38 @@ Rails.application.routes.draw do
 
   post '/login' => 'users#post_login'
 
-  get '/users' => 'users#index', as: 'users_path'
+  get '/users' => 'users#index', as: 'users'
 
-  get '/users/new' => 'users#new', as: 'new_user_path'
+  get '/users/new' => 'users#new', as: 'new_user'
 
-  post '/users/new' => 'users#create'
+  post '/users' => 'users#create'
 
   get '/users/:id' => 'users#show', as: 'user'
 
-  get '/users/:id/edit' => 'users#edit', as: 'edit_user_path'
+  get '/users/:id/edit' => 'users#edit', as: 'edit_user'
 
   patch '/users/:id' => 'users#update'
 
   delete '/users/:id' => 'users#destroy'
+
+  get '/logout' => 'users#logout'
+
+  get '/posts' => 'posts#index', as: 'posts'
+
+  get '/posts/new' => 'posts#new', as: 'new_post'
+
+  post '/posts' => 'posts#create'
+
+  get '/posts/:id' => 'posts#show', as: 'post'
+
+  get '/posts/:id/edit' => 'posts#edit', as: 'edit_post'
+
+  patch '/posts/:id' => 'post#update'
+
+  delete '/post/:id' => 'users#delete', as: 'delete_post'
+
+
+
 
 
 

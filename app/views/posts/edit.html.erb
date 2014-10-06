@@ -1,0 +1,7 @@
+<h1>Edit Post</h1>
+
+<%= form_for @post do |f| %>
+<%=   f.text_field :title, placeholder: "Title" %>
+<%=   f.text_area :body, size: "60 x 12" %>
+<%=   f.submit "Create" %>
+<% end %>

@@ -1,20 +1,31 @@
-class UsersController < ActionController::Base
+class UsersController < ApplicationController
   include ApplicationHelper
 
+  def index
+    @users = User.all
+  end
+
+  def show
+    @user = current_user
+  end
+
+  def edit
+    @user = current_user
+  end
+
   def new
+    if session[:user_id]
+      redirect_to root_path
+    end
     @user = User.new
   end
 
   def create
     user = User.create(username: params[:user][:username], password: params[:user][:password])
     session[:user_id] = user.id
-    puts user.id
-    redirect_to user_path(user.id)
+    redirect_to root_path
   end
 
-  def login
-
-  end
 
   def post_login
     user = User.find_by(username: params[:username])
@@ -25,6 +36,11 @@ class UsersController < ActionController::Base
     else
       redirect_to root_path
     end
+  end
+
+  def logout
+    session.clear
+    redirect_to root_path
   end
 
 end

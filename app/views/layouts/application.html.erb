@@ -5,13 +5,15 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 </head>
 <body>
 <nav>
   <% if current_user %>
   <ul>
-  	<li<a href="/users/<%= current_user.id %>">Profile</a>></li>
+  	<li><a href="/users/<%= current_user.id %>">Profile</a></li>
   	<li><a href="/posts">All Posts</a></li>
+    <li><a href="/posts/new">New Post</a></li>
   	<li><a href="/logout">Logout</a></li>
   </ul>
   <%else%>
